@@ -1,11 +1,12 @@
 {
-  "name": "vs-code-locize-translation",
+  "name": "vs-code-locize-pilot",
   "author": {
     "name": "umar sesay"
   },
   "icon": "icon.png",
   "description": "Un-official Locize VS-Code translation extension",
   "version": "0.0.1",
+  "publisher": "umarsesay",
   "engines": {
     "vscode": "^1.99.3",
     "node": "^16.0.0"

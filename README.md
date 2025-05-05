@@ -6,6 +6,12 @@ Un-official VS-Code locize translation to automatically update keys, and transla
 
 ![A screenshot of the sample extension.](./assets/kollex-vscode-extension.png)
 
+## How to Run
+
+1. Inside the host window, open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and type `Locize Pilot`
+
+![set the configuration.](./assets/locize-run.png)
+
 *tip: set the config
 
 ![set the configuration.](./assets/config.png)
@@ -29,13 +35,6 @@ npm run install:all
 ## Build webview UI source code
 
 npm run build:webview
-
-## Open sample in VS Code
-
-Once the sample is open inside VS Code you can run the extension by doing the following:
-
-1. Press `F5` to open a new Extension Development Host window
-2. Inside the host window, open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and type `Automate Locize Translations`
 
 ## Package the extension for use
 

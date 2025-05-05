@@ -4,17 +4,17 @@ Un-official VS-Code locize translation to automatically update keys, and transla
 
 *tip: This project was Scaffolded using [yeoman](https://yeoman.io/learning/)
 
-![A screenshot of the sample extension.](./assets/kollex-vscode-extension.png)
+![A screenshot of the sample extension.](https://github.com/webmansa/locize-vscode-extension/blob/main/assets/kollex-vscode-extension.png)
 
 ## How to Run
 
 1. Inside the host window, open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and type `Locize Pilot`
 
-![set the configuration.](./assets/locize-run.png)
+![set the configuration.](https://github.com/webmansa/locize-vscode-extension/blob/main/assets/locize-run.png)
 
 *tip: set the config
 
-![set the configuration.](./assets/config.png)
+![set the configuration.](https://github.com/webmansa/locize-vscode-extension/blob/main/assets/config.png)
 
 ## Documentation
 

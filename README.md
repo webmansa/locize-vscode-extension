@@ -1,6 +1,6 @@
-# Un-official Kollex VS-Code locize translation
+# Un-official VS-Code locize translation
 
-Un-official Kollex VS-Code locize translation to automatically update keys, and translation texts
+Un-official VS-Code locize translation to automatically update keys, and translation texts
 
 *tip: This project was Scaffolded using [yeoman](https://yeoman.io/learning/)
 

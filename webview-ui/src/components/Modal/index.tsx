@@ -1,5 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { VSCodeButton, VSCodeTextField } from "@vscode/webview-ui-toolkit/react";
+import { VSCodeButton, VSCodeTag, VSCodeTextField } from "@vscode/webview-ui-toolkit/react";
 import { useState } from "react";
 import { TConfig } from "../../App";
 import locize from "../../config/locize/export";
@@ -23,7 +23,7 @@ export const Modal: React.FC<ModalProps> = ({ handlePersistentConfig }) => {
             <Dialog.Portal>
                 <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50" />
                 <Dialog.Content className="fixed top-1/2 left-1/2 w-[90%] max-w-md p-6 bg-white rounded-lg shadow-lg transform -translate-x-1/2 -translate-y-1/2">
-                    <Dialog.Title className="text-lg font-bold">Settings Configuration</Dialog.Title>
+                    <VSCodeTag>Settings Configuration</VSCodeTag>
                     <Dialog.Description className="mt-2 text-sm text-gray-600">
                         Enter your Locize API config settings.
                     </Dialog.Description>

@@ -156,18 +156,11 @@ export class LocizeAutomationPanel {
           <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${
             webview.cspSource
           }; script-src 'nonce-${nonce}'; connect-src 'self' https://api.locize.app;">
-          <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
           <link rel="stylesheet" type="text/css" href="${stylesUri}">
-          <script type="text/javascript" nonce="${nonce}">
-            const locize_vscode = acquireVsCodeApi();
-          </script>
           <title>Automate Locize Translations</title>
         </head>
         <body>
           <div id="root"></div>
-          <script>
-            window.initialConfig = ${JSON.stringify(config)};
-          </script>
           <script type="module" nonce="${nonce}" src="${scriptUri}"></script>
         </body>
       </html>

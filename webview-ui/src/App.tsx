@@ -59,10 +59,7 @@ function App() {
         }
       })
 
-      console.log('translationObjects', translationObjects);
-
       await Promise.all(mapTranslationRequest(locizeState.languages, translationObjects, { version, namespace }));
-
 
       if (!translationKey) {
         vscode.postMessage({

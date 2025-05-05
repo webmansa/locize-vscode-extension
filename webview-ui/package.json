@@ -1,5 +1,7 @@
 {
   "name": "locize-automation",
+  "description": "Un-official Kollex VS-Code locize translation",
+  "icon": "icon.png",
   "author": {
     "name": "umar sesay"
   },

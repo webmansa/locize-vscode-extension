@@ -2,6 +2,8 @@
 
 Un-official Kollex VS-Code locize translation to automatically update keys, and translation texts
 
+*tip: This project was Scaffolded using [yeoman](https://yeoman.io/learning/)
+
 ![A screenshot of the sample extension.](./assets/kollex-vscode-extension.png)
 
 ## Documentation
@@ -29,7 +31,7 @@ npm run build:webview
 Once the sample is open inside VS Code you can run the extension by doing the following:
 
 1. Press `F5` to open a new Extension Development Host window
-2. Inside the host window, open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and type `Kollex Locize Automation`
+2. Inside the host window, open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and type `Automate Locize Translations`
 
 ## Package the extension for use
 

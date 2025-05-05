@@ -1,6 +1,14 @@
-import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn } from "vscode";
+import {
+  Disposable,
+  Webview,
+  WebviewPanel,
+  window,
+  Uri,
+  ViewColumn,
+} from "vscode";
 import { getUri } from "../utilities/getUri";
 import { getNonce } from "../utilities/getNonce";
+import * as vscode from "vscode"; // Use standard 'vscode' import
 
 /**
  * This class manages the state and behavior of LocizeAutomationPanel webview panels.
@@ -30,8 +38,16 @@ export class LocizeAutomationPanel {
     // the panel or when the panel is closed programmatically)
     this._panel.onDidDispose(() => this.dispose(), null, this._disposables);
 
+    const config = vscode.workspace.getConfiguration("locizePilot").get("projectId");
+
+    console.log(vscode.workspace.getConfiguration("locizePilot"), 'yay...');
+
     // Set the HTML content for the webview panel
-    this._panel.webview.html = this._getWebviewContent(this._panel.webview, extensionUri);
+    this._panel.webview.html = this._getWebviewContent(
+      this._panel.webview,
+      extensionUri,
+      { config }
+    );
 
     // Set an event listener to listen for messages passed from the webview context
     this._setWebviewMessageListener(this._panel.webview);
@@ -53,7 +69,7 @@ export class LocizeAutomationPanel {
         // Panel view type
         "showLocizeAutomation",
         // Panel title
-        "Kollex Locize Automation",
+        "Automate Locize Translations",
         // The editor column the panel should be displayed in
         ViewColumn.One,
         // Extra panel configurations
@@ -61,12 +77,27 @@ export class LocizeAutomationPanel {
           // Enable JavaScript in the webview
           enableScripts: true,
           // Restrict the webview to only load resources from the `out` and `webview-ui/build` directories
-          localResourceRoots: [Uri.joinPath(extensionUri, "out"), Uri.joinPath(extensionUri, "webview-ui/build")],
+          localResourceRoots: [
+            Uri.joinPath(extensionUri, "out"),
+            Uri.joinPath(extensionUri, "webview-ui/build"),
+          ],
         }
       );
 
-      LocizeAutomationPanel.currentPanel = new LocizeAutomationPanel(panel, extensionUri);
+      LocizeAutomationPanel.currentPanel = new LocizeAutomationPanel(
+        panel,
+        extensionUri
+      );
     }
+  }
+
+  /**
+   * Posts a message to the panel's webview.
+   *
+   * @param message The message to post. Should be serializable.
+   */
+  public postMessage(message: any) {
+    this._panel.webview.postMessage(message);
   }
 
   /**
@@ -98,11 +129,21 @@ export class LocizeAutomationPanel {
    * @returns A template string literal containing the HTML that should be
    * rendered within the webview panel
    */
-  private _getWebviewContent(webview: Webview, extensionUri: Uri) {
+  private _getWebviewContent(webview: Webview, extensionUri: Uri, config: any) {
     // The CSS file from the React build output
-    const stylesUri = getUri(webview, extensionUri, ["webview-ui", "build", "assets", "index.css"]);
+    const stylesUri = getUri(webview, extensionUri, [
+      "webview-ui",
+      "build",
+      "assets",
+      "index.css",
+    ]);
     // The JS file from the React build output
-    const scriptUri = getUri(webview, extensionUri, ["webview-ui", "build", "assets", "index.js"]);
+    const scriptUri = getUri(webview, extensionUri, [
+      "webview-ui",
+      "build",
+      "assets",
+      "index.js",
+    ]);
 
     const nonce = getNonce();
     // Tip: Install the es6-string-html VS Code extension to enable code highlighting below
@@ -112,12 +153,21 @@ export class LocizeAutomationPanel {
         <head>
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}'; connect-src 'self' https://api.locize.app;">
+          <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${
+            webview.cspSource
+          }; script-src 'nonce-${nonce}'; connect-src 'self' https://api.locize.app;">
+          <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
           <link rel="stylesheet" type="text/css" href="${stylesUri}">
-          <title>Kollex Locize Automation</title>
+          <script type="text/javascript" nonce="${nonce}">
+            const locize_vscode = acquireVsCodeApi();
+          </script>
+          <title>Automate Locize Translations</title>
         </head>
         <body>
           <div id="root"></div>
+          <script>
+            window.initialConfig = ${JSON.stringify(config)};
+          </script>
           <script type="module" nonce="${nonce}" src="${scriptUri}"></script>
         </body>
       </html>
@@ -139,8 +189,19 @@ export class LocizeAutomationPanel {
 
         switch (command) {
           case "toast":
-            // Code that should run in response to the hello message command
+            // Code that should run in response to the toast message command
             window.showInformationMessage(text);
+            return;
+          case "config":
+            // Code that should run in response to the config message command
+            console.log("Received config from extension:", message.data);
+            // You might want to store the config data in a class property
+            // this._config = message.data;
+            // Or, if you need to pass it to the webview, you can post a message back
+            this._panel.webview.postMessage({
+              type: "config",
+              data: message.data,
+            });
             return;
           // Add more switch case statements here as more webview message commands
           // are created within the webview context (i.e. inside media/main.js)

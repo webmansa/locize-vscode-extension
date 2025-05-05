@@ -49,7 +49,7 @@ class LocizeAutomationPanel {
             // Panel view type
             "showLocizeAutomation", 
             // Panel title
-            "Kollex Locize Automation", 
+            "Automate Locize Translations", 
             // The editor column the panel should be displayed in
             vscode_1.ViewColumn.One, 
             // Extra panel configurations
@@ -102,8 +102,9 @@ class LocizeAutomationPanel {
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}'; connect-src 'self' https://api.locize.app;">
+          <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
           <link rel="stylesheet" type="text/css" href="${stylesUri}">
-          <title>Kollex Locize Automation</title>
+          <title>Automate Locize Translations</title>
         </head>
         <body>
           <div id="root"></div>
@@ -125,7 +126,7 @@ class LocizeAutomationPanel {
             const text = message.text;
             switch (command) {
                 case "toast":
-                    // Code that should run in response to the hello message command
+                    // Code that should run in response to the toast message command
                     vscode_1.window.showInformationMessage(text);
                     return;
                 // Add more switch case statements here as more webview message commands

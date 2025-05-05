@@ -1,7 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { VSCodeButton, VSCodeTag, VSCodeTextField } from "@vscode/webview-ui-toolkit/react";
 import { useState } from "react";
-import { TConfig } from "../../App";
 import locize from "../../config/locize/export";
 
 interface ModalProps {

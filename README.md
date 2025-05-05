@@ -6,6 +6,10 @@ Un-official VS-Code locize translation to automatically update keys, and transla
 
 ![A screenshot of the sample extension.](./assets/kollex-vscode-extension.png)
 
+*tip: set the config
+
+![set the configuration.](./assets/config.png)
+
 ## Documentation
 
 For a deeper dive into how this sample works, read the guides below.

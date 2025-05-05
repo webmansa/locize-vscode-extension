@@ -12,19 +12,6 @@
   },
   "main": "./out/extension.js",
   "contributes": {
-    "configuration": {
-      "title": "Locize Pilot",
-      "properties": {
-        "locizePilot.projectId": {
-          "type": "string",
-          "description": "Please Provide Project ID."
-        },
-        "locizePilot.apiKey": {
-          "type": "string",
-          "description": "Please Provide Your API Key."
-        }
-      }
-    },
     "commands": [
       {
         "command": "locize-automation",

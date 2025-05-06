@@ -5,7 +5,7 @@
   },
   "icon": "icon.png",
   "description": "Un-official Locize VS-Code translation extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "umarsesay",
   "engines": {
     "vscode": "^1.99.3",

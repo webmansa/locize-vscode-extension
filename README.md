@@ -4,6 +4,8 @@ Un-official VS-Code locize translation to automatically update keys, and transla
 
 *tip: This project was Scaffolded using [yeoman](https://yeoman.io/learning/)
 
+you can download this extension already from the marketplace  ![vs-code-locize-pilot](https://marketplace.visualstudio.com/items?itemName=umarsesay.vs-code-locize-pilot)
+
 ![A screenshot of the sample extension.](https://raw.githubusercontent.com/webmansa/locize-vscode-extension/main/assets/vscode-extension.png)
 
 ## How to Run
